@@ -4,6 +4,7 @@ import Banner from "./components/Layout/Banner";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import React, { useState } from "react";
+import CartProvider from "./store/CartProvider";
 
 function App() {
 	const [cartVisible, setCartVisible] = useState(false);
@@ -17,14 +18,14 @@ function App() {
 	};
 
 	return (
-		<React.Fragment>
+		<CartProvider>
 			{cartVisible && <Cart onCloseCart={hideCartHandler} />}
 			<Header onShowCart={showCartHandler} />
 			<Banner />
 			<main>
 				<Meals />
 			</main>
-		</React.Fragment>
+		</CartProvider>
 	);
 }
 
